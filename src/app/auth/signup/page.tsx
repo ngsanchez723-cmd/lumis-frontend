@@ -17,13 +17,16 @@ export default function SignUpPage() {
     setLoading(true);
     setError(null);
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
     });
 
-    if (error) {
-      setError(error.message);
+    if (signUpError) {
+      setError(signUpError.message || JSON.stringify(signUpError));
+      setLoading(false);
+    } else if (!data.session) {
+      setError("Account created but no session returned. Check email confirmation settings in Supabase.");
       setLoading(false);
     } else {
       router.push("/dashboard");
