@@ -1,6 +1,5 @@
 import {
   Skeleton,
-  SkeletonLine,
   SkeletonStatCard,
   SkeletonRow,
 } from "@/components/skeletons";
