@@ -94,7 +94,7 @@ function SearchBar() {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const search = useCallback(async (q: string) => {
